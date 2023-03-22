@@ -19,6 +19,7 @@ public class atwo_evader_TaskGeatRandomTarget : Node
     {
 
         node TargetNode = GameObject.Find("Node List").GetComponent<nodeSelection>().getRandomNode();
+        Debug.Log("SurpisePotota");
 
         if (TargetNode != null)
         {

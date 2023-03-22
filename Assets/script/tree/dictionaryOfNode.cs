@@ -28,7 +28,8 @@ public class dictionaryOfNode : MonoBehaviour
      *  
      *  [Evader specific]
      *  listEnemy       = [List<Collider>] Contain the list of all the seeker that are close to the evader.
-     *  
+     *  collectible     = [ GameObject ] Collectible that the ai want to collect.
+     *  needEvadePath   = [ bool ] Indicate if the evader need to get a new escape path. 
      * 
      * 
      * 

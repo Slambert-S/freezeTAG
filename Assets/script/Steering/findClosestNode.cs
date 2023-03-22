@@ -41,21 +41,6 @@ public class findClosestNode : MonoBehaviour
             }
 
 
-                /*
-                if (Physics.Linecast(agentPosition, n.transform.position))
-                {
-                    Debug.Log("blocked");
-                }
-                else
-                {
-                    if(Vector3.Distance(agentPosition,n.transform.position) < currentDistance)
-                    {
-                        closestNode = n;
-                    }
-
-                }*/
-
-
             }
 
         return closestNode;

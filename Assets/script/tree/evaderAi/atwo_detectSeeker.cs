@@ -23,10 +23,22 @@ public class atwo_detectSeeker : MonoBehaviour
         int haveNewPath = 0;
         foreach (Collider hitCollider in hitColliders)
         {
+            //check if a seeker is in the area
             if (hitCollider.CompareTag("seeker"))
             {
-                listSeeker.Add(hitCollider);
-                Debug.Log("Evader spot a seeker");
+
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, hitCollider.transform.position - transform.position, out hit, Mathf.Infinity))
+                {
+                    //check if the agent can see the seeker
+                    if (hit.collider.CompareTag("seeker"))
+                    {
+                        listSeeker.Add(hitCollider);
+                    }
+                }
+                
+                //Debug.Log("Evader spot a seeker");
+                
                 /*
                 float distance = (hitCollider.transform.position - this.transform.position).magnitude;
                 _sterringAgent.stateBheaviour.isFleeing = true;

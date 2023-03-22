@@ -20,12 +20,19 @@ public class atwo_TaskGoToTarget : Node
 
     public override NodeState Evaluate()
     {
+        object nearNode = GetData("nearNode");
+        if (nearNode != null && (bool)nearNode == true)
+        {
+            Debug.Log("patate");
+            state = NodeState.SUCCESS;
+            return state;
+        }
         node target = (node)GetData("nextNode");
         
         if (_scritRef.seekScript != null)
         {
             // Debug.Log(target.gameObject);
-            //Debug.Log("potatp + " + target);
+            Debug.Log("potatp + " + target);
             Vector3 steering = _seekScript.beaviourSeek(4, target.transform.position, _behaviourScript, false);
             _behaviourScript.moveAgent(steering);
             state = NodeState.RUNNING;

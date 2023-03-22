@@ -22,7 +22,7 @@ public class EvaderBT : Tree
                 //flee from close enemy
                 new Sequence(new List<Node>{ 
                     //check if enemy is close 
-                    new atwo_evader_CheckIfenemyClose(transform, scriptReference),
+                    new atwo_evader_CheckIfenemyClose(transform, scriptReference, 2.0f),
                     //if it is evade
                     new atwo_evaderTaskCloseEvade(transform,scriptReference)
 
@@ -30,88 +30,120 @@ public class EvaderBT : Tree
                 }),
 
                 //farther away from enemy / was able to escape
-                /*new Sequence (new List<Node>{ 
+                new Sequence (new List<Node>{ 
                    //check if the enemy can be seen
                    
-                    
-                    //if not and far away, then find path in the opposing direction
-
-                })*/
-
-
-            }),
-
-            //normally Wanedring Around the map
-            new Selector(new List<Node>{
-                new Sequence(new List<Node>
-                {
-                    new atwo_CheckMissingClosestNode(this.transform),
-                    new atwo_TaskGetNearestNode(this.transform, scriptReference)
-                
-                
-                   //TODO: Add check enemy and go to behavior
-                }),
-                //Check for pathfindig target node, set it and geth path
-                new Sequence(new List<Node>
-                {
-                    new atwo_evade_CheckMissingTargetPathfinding(transform),
-                    new atwo_evader_TaskGeatRandomTarget(transform, pathFindingList)
+                   new atwo_evader_CheckIfenemyClose(transform, scriptReference, 5.0f),
+                   new atwo_evader_CheckNeedNewPath(),
+                   //if not and far away, then find path in the opposing direction
+                   new atwo_TaskGetNearestNode(this.transform, scriptReference),
+                   new atwo_evader_TaskFindEscapePath(transform,pathFindingList)
 
 
 
                 }),
 
-                new Sequence(new List<Node>
-                {
-                    //check if i arrived at the taget node
 
-                    new atwo_CheckArrivedAtNode(this.transform, scriptReference),
+                    //normally Wanedring Around the map
+                new Selector(new List<Node>{
 
-                    //check for last node of if i need to get next node 
-                    new Selector(new List<Node>
+                    new Sequence(new List<Node>
                     {
+                        new atwo_CheckMissingClosestNode(this.transform),
+                        new atwo_TaskGetNearestNode(this.transform, scriptReference)
+                
+                
+                       //TODO: Add check enemy and go to behavior
+                    }),
+                    //Check for pathfindig target node, set it and geth path
+                    new Sequence(new List<Node>
+                    {
+                        new atwo_evade_CheckMissingTargetPathfinding(transform),
 
+                        //Select a radom node or the node of the collectible
+                        new Selector(new List<Node>{
+                            
+                            new Sequence(new List<Node>{
+                                new atwo_debugAssigneCollictible(scriptReference),
+                                new atwo_evader_CheckAssignedCollectible(),
+                                new atwo_evader_TaskSetColectibleNode(pathFindingList,transform)
+                        
+                            }),
 
-                        new Sequence(new List<Node>
-                        {
-                            //check for last node
-                            new atwo_CheakLastNode(),
-
-
-                            //get new path
                             new atwo_evader_TaskGeatRandomTarget(transform, pathFindingList)
-
-
                         }),
 
-                        new Sequence(new List<Node>
-                        {
-                            //select the next node in the path
 
-                            new atwo_TaskSelectNextNode(4),
+
+                    }),
+
+                    new Sequence(new List<Node>
+                    {
+                        //check if i arrived at the taget node
+
+                        new atwo_CheckArrivedAtNode(this.transform, scriptReference),
+
+                        //check for last node of if i need to get next node 
+                        new Selector(new List<Node>
+                        {
+
+
+                            new Sequence(new List<Node>
+                            {
+                                //check for last node
+                                new atwo_CheakLastNode(),
+
+
+                                //Select a radom node or the node of the collectible
+                                new Selector(new List<Node>{
+
+                                    new Sequence(new List<Node>{
+                                        new atwo_debugAssigneCollictible(scriptReference),
+                                        new atwo_evader_CheckAssignedCollectible(),
+                                        //move toward the collectible
+                                        new atwo_evader_TaskMoveToCollectCollectible(transform,scriptReference),
+                                        new atwo_evader_TaskSetColectibleNode(pathFindingList,transform)
+
+                                    }),
+
+                                    new atwo_evader_TaskGeatRandomTarget(transform, pathFindingList)
+                                }),
+
+
+                            }),
+
+                            new Sequence(new List<Node>
+                            {
+                                //select the next node in the path
+
+                                new atwo_TaskSelectNextNode(4),
                         
-                           // Debug.log(_rootDebug.GetData("nextNode"))
+                               // Debug.log(_rootDebug.GetData("nextNode"))
+
+                            }),
 
                         }),
 
                     }),
 
+                    //Check if we need to rotate to face the target node
+                    new Sequence(new List<Node>
+                    {
+                        new atwo_CheckFacingNode(transform),
+
+                        new atwo_TaskRotateTowardPoint(transform , scriptReference)
+
+
+                    }),
+
+
+
+                     new  atwo_TaskGoToTarget(scriptReference)
                 }),
 
-                //Check if we need to rotate to face the target node
-                new Sequence(new List<Node>
-                {
-                    new atwo_CheckFacingNode(transform),
-
-                    new atwo_TaskRotateTowardPoint(transform , scriptReference)
-
-
-                }),
-
-
-
-                 new  atwo_TaskGoToTarget(scriptReference)
             }),
+
+            
             //Check for closet node
             
         }) ; ;

@@ -10,6 +10,7 @@ public class atwo_variable_reference : MonoBehaviour
     public bool isFreezed;
     public node targetLastKnownNode;
     public node lastNode;
+    public GameObject collectible;
 
     private void Start()
     {

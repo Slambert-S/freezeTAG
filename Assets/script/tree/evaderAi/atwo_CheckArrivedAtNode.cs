@@ -27,8 +27,15 @@ public class atwo_CheckArrivedAtNode : Node
         }
         else
         {
+            object nearNode = GetData("nearNode");
+            if (nearNode != null && (bool)nearNode == true)
+            {
+                Debug.Log("patate");
+                state = NodeState.SUCCESS;
+                return state;
+            }
             //Debug.Log(" in check arrived at node : "+(node)GetData("nextNode"));
-            if(Vector3.Distance(_transform.position, targetNode.transform.position) <= 1.0f)
+            if (Vector3.Distance(_transform.position, targetNode.transform.position) <= 1.0f)
             {
                // Debug.Log("near the node");
                 _rootNode.SetData("closestNode", targetNode);
