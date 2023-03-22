@@ -6,17 +6,7 @@ public class atwo_detectSeeker : MonoBehaviour
 {
     public float radius;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+  
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -24,10 +14,10 @@ public class atwo_detectSeeker : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 
-    public bool checkAroundforSeeker()
+    public List<Collider> checkAroundforSeeker(float radius)
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
-
+        List<Collider> listSeeker = new List<Collider>();
         Vector3 steering = Vector3.zero;
 
         int haveNewPath = 0;
@@ -35,6 +25,7 @@ public class atwo_detectSeeker : MonoBehaviour
         {
             if (hitCollider.CompareTag("seeker"))
             {
+                listSeeker.Add(hitCollider);
                 Debug.Log("Evader spot a seeker");
                 /*
                 float distance = (hitCollider.transform.position - this.transform.position).magnitude;
@@ -67,12 +58,13 @@ public class atwo_detectSeeker : MonoBehaviour
 
                
                 } */
-                return true;
+
+               // return true;
             }
 
         }
 
-        return false;
+        return listSeeker;
     /*
 
         if (haveNewPath == 0 && needNewPathFinding == 1)

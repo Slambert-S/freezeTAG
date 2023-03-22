@@ -17,12 +17,14 @@ public class atwo_evader_CheckIfenemyClose : Node
 
     public override NodeState Evaluate()
     {
-        bool spotedEnemy = _scriptReference.detectSeekerScript.checkAroundforSeeker();
-        if (spotedEnemy)
+        List<Collider> spotedEnemy = _scriptReference.detectSeekerScript.checkAroundforSeeker(2);
+        if (spotedEnemy.Count > 0)
         {
-            return NodeState.FAILURE;
-        }
+            _rootNode.SetData("listEnemy", spotedEnemy);
 
+            return NodeState.SUCCESS;
+        }
+       
         return NodeState.FAILURE;
     }
 }

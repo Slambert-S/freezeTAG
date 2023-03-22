@@ -23,6 +23,12 @@ public class dictionaryOfNode : MonoBehaviour
      *  awayFromWaypoint = [ bool ] True if the Agent is not currently in their patrol area.
      *  targetLastKnownNode = [ node ] The last knonw node of the target the Agent saw.
      *  
+     *  
+     *  
+     *  
+     *  [Evader specific]
+     *  listEnemy       = [List<Collider>] Contain the list of all the seeker that are close to the evader.
+     *  
      * 
      * 
      * 

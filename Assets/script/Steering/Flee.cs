@@ -21,10 +21,6 @@ public class Flee : MonoBehaviour
 
         Vector3 absTargetToCharacter = AbsValueDistance.getAbsoluteDistance( agent.transform.position, agent.target.transform.position);
         Vector3 desiredVelocity = (agent.transform.position - agent.target.transform.position);
-        /*
-        desiredVelocity.x = desiredVelocity.x / absTargetToCharacter.x;
-        desiredVelocity.y = desiredVelocity.y / absTargetToCharacter.y;
-        desiredVelocity.z = desiredVelocity.z / absTargetToCharacter.z;*/
 
         desiredVelocity = desiredVelocity.normalized * agent.maxSpeed;
 
@@ -38,11 +34,7 @@ public class Flee : MonoBehaviour
 
         Vector3 absTargetToCharacter = AbsValueDistance.getAbsoluteDistance(agent.transform.position, target);
         Vector3 desiredVelocity = (agent.transform.position - target);
-        /*
-        desiredVelocity.x = desiredVelocity.x / absTargetToCharacter.x;
-        desiredVelocity.y = desiredVelocity.y / absTargetToCharacter.y;
-        desiredVelocity.z = desiredVelocity.z / absTargetToCharacter.z;*/
-
+     
         desiredVelocity = desiredVelocity.normalized * agent.maxSpeed;
 
         Vector3 steerring = desiredVelocity - agent.Velocity;
@@ -54,16 +46,29 @@ public class Flee : MonoBehaviour
     {
 
         Vector3 absTargetToCharacter = AbsValueDistance.getAbsoluteDistance(agent.transform.position, target);
+        
         Vector3 desiredVelocity = (agent.transform.position - target);
-        /*
-        desiredVelocity.x = desiredVelocity.x / absTargetToCharacter.x;
-        desiredVelocity.y = desiredVelocity.y / absTargetToCharacter.y;
-        desiredVelocity.z = desiredVelocity.z / absTargetToCharacter.z;*/
+   
 
         desiredVelocity = desiredVelocity.normalized * agent.maxSpeed;
 
         Vector3 steerring = desiredVelocity - agent.Velocity;
 
         return steerring* weight;
+    }
+
+    public Vector3 atwoGetSteeringAvoidSeeker(float weight, Vector3 target, bhv_strg_agent agent)
+    {
+
+        Vector3 absTargetToCharacter = AbsValueDistance.getAbsoluteDistance(agent.transform.position, target);
+
+        Vector3 desiredVelocity = (agent.transform.position - target);
+
+
+        desiredVelocity = desiredVelocity.normalized * agent.maxSpeed;
+
+        Vector3 steerring = desiredVelocity /* - agent.Velocity*/;
+
+        return steerring * weight;
     }
 }

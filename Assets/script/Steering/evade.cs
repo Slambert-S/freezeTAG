@@ -46,7 +46,7 @@ public class evade : MonoBehaviour
         float ahead = distance / 10;
         Vector3 futurePosition = evadePoint.transform.position + Vector3.zero * ahead;
 
-        Vector3 steering = agent.fleeScript.getSteeringAvoid(futurePosition, agent) - agent.Velocity;
+        Vector3 steering = Vector3.zero /*wagent.fleeScript(futurePosition, agent) - agent.Velocity*/;
         /*
         Velocity = Velocity + (steering * Time.deltaTime);
         Velocity = Vector3.ClampMagnitude(Velocity, maxAccel);
@@ -54,54 +54,19 @@ public class evade : MonoBehaviour
         return Quaternion.LookRotation(steering);
     }
 
-    /*
-        public Vector3 flee( Vector3 targetPos)
-        {
+    public Vector3 atwoAvoid(float weight, bhv_strg_agent agent, Vector3 evadePoint, scriptManager scriptReference)
+    {
 
+        float distance = Vector3.Distance(agent.transform.position, evadePoint);
+        float ahead = distance / 10;
+        Vector3 futurePosition = evadePoint + Vector3.forward * ahead;
 
-            Vector3 absTargetToCharacter = getAbsoluteDistance();
-
-            Vector3 desiredVelocity = (transform.position - targetPos);
-
-
-            Debug.Log(desiredVelocity.x / absTargetToCharacter.x + " acceleration : " + desiredVelocity.x + "   ABS : " + absTargetToCharacter.x);
-            desiredVelocity.x = desiredVelocity.x / absTargetToCharacter.x;
-            desiredVelocity.y = desiredVelocity.y / absTargetToCharacter.y;
-            desiredVelocity.z = desiredVelocity.z / absTargetToCharacter.z;
-            desiredVelocity = desiredVelocity * maxAccel;
-
-            Vector3 steering = desiredVelocity - Velocity;
-
-            Velocity = Velocity + (steering * Time.deltaTime);
-            Debug.Log("steering X  : " + steering.x + "  Steering  Z : " + steering.z);
-            Velocity = Vector3.ClampMagnitude(Velocity, maxAccel);
-
-            return Velocity;
-
-
-
-
-        }
-
+        Vector3 steering = scriptReference.fleeScript.atwoGetSteeringAvoidSeeker(1,futurePosition, agent) - agent.Velocity;
+        /*
+        Velocity = Velocity + (steering * Time.deltaTime);
+        Velocity = Vector3.ClampMagnitude(Velocity, maxAccel);
         */
-    /*
-        public Vector3 getAbsoluteDistance()
-        {
-            float TPX = target.transform.position.x;
-            float TPY = target.transform.position.y;
-            float TPZ = target.transform.position.z;
-
-            float CPX = transform.position.x;
-            float CPY = transform.position.y;
-            float CPZ = transform.position.z;
-
-            Vector3 absTargetToCharacter;
-
-            absTargetToCharacter.x = Mathf.Abs(CPX - TPX);
-            absTargetToCharacter.y = Mathf.Abs(  CPY - TPY);
-            absTargetToCharacter.z = Mathf.Abs(  CPZ - TPZ);
-
-            return absTargetToCharacter;
-        }
-    */
+        steering *= weight;
+        return steering;
+    }
 }

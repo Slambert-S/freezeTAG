@@ -57,6 +57,15 @@ public class bhv_strg_agent : MonoBehaviour
         this.transform.rotation = faceForward(this);
 
     }
+    public void avoidTarget(Vector3 mainVelocity)
+    {
+
+        //Debug.Log("In pursue target");
+        moveAgent(mainVelocity);
+        this.transform.rotation = faceBackward(this);
+
+    }
+
 
     public Quaternion faceForward(bhv_strg_agent agent)
     {
@@ -67,4 +76,14 @@ public class bhv_strg_agent : MonoBehaviour
 
         return Quaternion.LookRotation(agent.Velocity);
     }
+    public Quaternion faceBackward(bhv_strg_agent agent)
+    {
+        if (agent.Velocity == Vector3.zero)
+        {
+            return agent.transform.rotation;
+        }
+
+        return Quaternion.LookRotation(agent.Velocity*-1);
+    }
 }
+

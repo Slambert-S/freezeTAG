@@ -22,8 +22,10 @@ public class EvaderBT : Tree
                 //flee from close enemy
                 new Sequence(new List<Node>{ 
                     //check if enemy is close 
-                    new atwo_evader_CheckIfenemyClose(transform, scriptReference)
+                    new atwo_evader_CheckIfenemyClose(transform, scriptReference),
                     //if it is evade
+                    new atwo_evaderTaskCloseEvade(transform,scriptReference)
+
                 
                 }),
 
