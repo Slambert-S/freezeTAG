@@ -11,7 +11,7 @@ public class atwo_variable_reference : MonoBehaviour
     public node targetLastKnownNode;
     public node lastNode;
     public GameObject collectible;
-
+    public bool needNewPath = true;
     private void Start()
     {
         seeTargetAgent = false;

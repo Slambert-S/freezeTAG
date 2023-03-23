@@ -29,6 +29,8 @@ public class atwo_evader_TaskGeatRandomTarget : Node
             _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPath(nearestNode, TargetNode);
             _rootNode.SetData("nextNode", _pathFindingList[0]);
             _rootNode.SetData("pathFindingList", _pathFindingList);
+
+           // _rootNode.SetData("potatoDebug", false);
             Debug.Log("afterGettingthe List");
             state = NodeState.SUCCESS;
             return state;

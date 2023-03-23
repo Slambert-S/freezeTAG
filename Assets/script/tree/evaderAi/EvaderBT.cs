@@ -34,10 +34,10 @@ public class EvaderBT : Tree
                    //check if the enemy can be seen
                    
                    new atwo_evader_CheckIfenemyClose(transform, scriptReference, 5.0f),
-                   new atwo_evader_CheckNeedNewPath(),
+                   new atwo_evader_CheckNeedNewPath(scriptReference),
                    //if not and far away, then find path in the opposing direction
                    new atwo_TaskGetNearestNode(this.transform, scriptReference),
-                   new atwo_evader_TaskFindEscapePath(transform,pathFindingList)
+                   new atwo_evader_TaskFindEscapePath(transform,pathFindingList,scriptReference)
 
 
 

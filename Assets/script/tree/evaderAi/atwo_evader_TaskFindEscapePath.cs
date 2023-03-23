@@ -7,10 +7,13 @@ public class atwo_evader_TaskFindEscapePath : Node
 {
     private Transform _transform;
     private List<node> _pathFindingList;
-    public atwo_evader_TaskFindEscapePath(Transform transform, List<node> pathFindingList)
+    private scriptManager _scriptReference;
+    public atwo_evader_TaskFindEscapePath(Transform transform, List<node> pathFindingList,scriptManager scriptReference)
     {
         _transform = transform;
         _pathFindingList = pathFindingList;
+        _scriptReference = scriptReference;
+
 
     }
 
@@ -34,9 +37,18 @@ public class atwo_evader_TaskFindEscapePath : Node
         _rootNode.SetData("targetNode", newTargetNode);
         node nearestNode = (node)GetData("closestNode");
         _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPath(nearestNode, newTargetNode);
+        while(_pathFindingList.Count < 3)
+        {
+            newTargetNode = GameObject.Find("Node List").GetComponent<nodeSelection>().getRandomNode();
+            _rootNode.SetData("targetNode", newTargetNode);
+            nearestNode =findClosestNode.getClosestNode(_transform.position);
+            _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPath(nearestNode, newTargetNode);
+        }
         _rootNode.SetData("nextNode", _pathFindingList[0]);
         _rootNode.SetData("pathFindingList", _pathFindingList);
         _rootNode.SetData("needEvadePath", false);
+        _scriptReference.variableReference.needNewPath = false;
+
 
         state = NodeState.SUCCESS;
         return state;

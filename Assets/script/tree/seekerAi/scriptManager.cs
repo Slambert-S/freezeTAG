@@ -12,6 +12,7 @@ public class scriptManager : MonoBehaviour
     public atwo_coneOfView coneOfView;
     public atwo_variable_reference variableReference;
     public atwo_detectSeeker detectSeekerScript;
+    public timerForNewPath timerForNewPath;
    
 
     

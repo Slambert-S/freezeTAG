@@ -31,7 +31,7 @@ public class atwo_evader_CheckIfenemyClose : Node
             }
             else
             {
-                _rootNode.SetData("needEvadePath", false);
+                _rootNode.SetData("needEvadePath", true);
             }
 
             return NodeState.FAILURE;

@@ -29,7 +29,7 @@ public class atwo_evader_TaskMoveToCollectCollectible : Node
         else
         {
             _rootNode.SetData("collectible", null);
-            
+            _rootNode.SetData("potatoDebug", true);
             Debug.Log("toutch the collectible");
             _rootNode.SetData("nearNode", false);
             state = NodeState.FAILURE;
