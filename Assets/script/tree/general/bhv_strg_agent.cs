@@ -7,10 +7,12 @@ public class bhv_strg_agent : MonoBehaviour
     public Vector3 Velocity { get; set; }
     public float maxSpeed;
     private scriptManager _scriptManager;
+    private atwo_variable_reference _variableManager;
     // Start is called before the first frame update
     void Start()
     {
         _scriptManager = gameObject.GetComponent<scriptManager>();
+        _variableManager = gameObject.GetComponent<atwo_variable_reference>();
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class bhv_strg_agent : MonoBehaviour
 
         //prevent colisions
         //wall collision handling
-        Vector3[] neighbors = _scriptManager.collisionScript.visionDetection();
+        Vector3[] neighbors = _scriptManager.collisionScript.visionDetection(_variableManager);
 
         Vector3 tempAcc = Vector3.zero;
         int nbSteering = 0;

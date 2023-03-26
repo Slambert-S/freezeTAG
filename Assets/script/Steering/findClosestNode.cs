@@ -23,12 +23,18 @@ public class findClosestNode : MonoBehaviour
         listOfNode = GameObject.Find("Node List").GetComponent<nodeSelection>().getListNode();
 
         float currentDistance = float.MaxValue;
-        node closestNode = null;
+        node closestNode = null; 
+        
+        int layerMask = 1 << 7;
+
+        // This would cast rays only against colliders in layer 8.
+        // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
+        layerMask = ~layerMask;
         foreach (node n in listOfNode)
         {
 
             RaycastHit hit;
-            if (Physics.Raycast(agentPosition, n.transform.position - agentPosition, out hit, Mathf.Infinity))
+            if (Physics.Raycast(agentPosition, n.transform.position - agentPosition, out hit, Mathf.Infinity, layerMask))
             {
                 if (hit.collider.gameObject.GetComponentInParent<node>() != null)
                 {

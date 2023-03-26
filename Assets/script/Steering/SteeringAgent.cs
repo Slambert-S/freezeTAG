@@ -299,7 +299,7 @@ public class SteeringAgent : MonoBehaviour
         }
 
         //wall collision handling
-        Vector3[] neighbors = collisionDetection.visionDetection();
+        Vector3[] neighbors = collisionDetection.visionDetectionVOneebug();
 
         Vector3 tempAcc = Vector3.zero;
         int nbSteering = 0;
@@ -358,7 +358,7 @@ public class SteeringAgent : MonoBehaviour
 
         }
 
-        Vector3[] neighbors = collisionDetection.visionDetection();
+        Vector3[] neighbors = collisionDetection.visionDetectionVOneebug();
        
         Vector3 tempAcc = Vector3.zero;
         int nbSteering = 0;
