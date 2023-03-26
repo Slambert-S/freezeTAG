@@ -22,7 +22,7 @@ public class dictionaryOfNode : MonoBehaviour
      *  stopPatrol      = [ bool ] Set as true if the agent does not want to patrol.
      *  awayFromWaypoint = [ bool ] True if the Agent is not currently in their patrol area.
      *  targetLastKnownNode = [ node ] The last knonw node of the target the Agent saw.
-     *  
+     *  isInvestigating = [ bool ] Is the Seeker currently going to investigate a collectible;
      *  
      *  
      *  

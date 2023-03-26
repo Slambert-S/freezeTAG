@@ -37,6 +37,15 @@ public class SeekerBT : Tree
 
 
                 }),
+
+                new Sequence(new List<Node>{ 
+                    //check in variable if they need to check a missing node spot 
+                    new atwo_seeker_checkNodeTrigger(scriptReference),
+
+                    //if its the case , set the missing node spot at the last known node and stop the partol 
+                    new atwo_seeker_TaskSetUpInvestigateCollectible(scriptReference)
+
+                }),
                 //go to last known node
                 new Sequence(new List<Node>
                 {

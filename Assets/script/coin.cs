@@ -27,4 +27,16 @@ public class coin : MonoBehaviour
 
         Destroy(this.gameObject);
     }
+
+    public void atwo_coinCollected()
+    {
+        /* if (onCollectedCoin != null)
+         {
+             onCollectedCoin();
+         }*/
+
+        GameObject.Find("gameManger").GetComponent<seeker_investigation>().assigneSeekerToInvestigateCollectible(transform.position);
+
+        Destroy(this.gameObject);
+    }
 }

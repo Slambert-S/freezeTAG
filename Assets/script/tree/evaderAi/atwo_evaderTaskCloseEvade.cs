@@ -26,7 +26,7 @@ public class atwo_evaderTaskCloseEvade : Node
         {
             steering += _scriptReference.evadeScript.atwoAvoid(3, _scriptReference.behaviourAgent, seeker.transform.position, _scriptReference);
         }
-        Debug.Log(steering);
+        //Debug.Log(steering);
         _scriptReference.behaviourAgent.avoidTarget(steering);
         return NodeState.RUNNING;
     }

@@ -19,20 +19,13 @@ public class atwo_evader_TaskSetColectibleNode : Node
     // Start is called before the first frame update
     public override NodeState Evaluate()
     {
-        object nearNode = GetData("nearNode");
-        if (nearNode != null && (bool) nearNode == true)
-        {
-            Debug.Log("patate");
-            state = NodeState.SUCCESS;
-            return state;
-        }
-        else
-        {
+       
+        
             GameObject collectible = (GameObject)GetData("collectible");
             node TargetNode = findClosestNode.getClosestNode(collectible.transform.position);
 
 
-            Debug.Log("manifacure of potato");
+            //Debug.Log("manifacure of potato");
             if (TargetNode != null)
             {
 
@@ -51,6 +44,9 @@ public class atwo_evader_TaskSetColectibleNode : Node
                 }*/
                 _rootNode.SetData("nextNode", _pathFindingList[0]);
                 _rootNode.SetData("pathFindingList", _pathFindingList);
+                _rootNode.SetData("wandering", false);
+                _rootNode.SetData("nearNode", false);
+
                 //Debug.Log("afterGettingthe List");
                 state = NodeState.SUCCESS;
                 return state;
@@ -63,7 +59,7 @@ public class atwo_evader_TaskSetColectibleNode : Node
                 return state;
             }
 
-        }
+        
 
     }
 }

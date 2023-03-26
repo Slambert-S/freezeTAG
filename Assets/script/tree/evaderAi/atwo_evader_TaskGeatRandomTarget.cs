@@ -19,19 +19,27 @@ public class atwo_evader_TaskGeatRandomTarget : Node
     {
 
         node TargetNode = GameObject.Find("Node List").GetComponent<nodeSelection>().getRandomNode();
-        Debug.Log("SurpisePotota");
+       // Debug.Log("SurpisePotota");
+        object potato = GetData("potatoDebug");
 
-        if (TargetNode != null)
+        if (TargetNode != null  )
         {
+           /* if (potato == null || (bool)potato == true)
+            {
+                _rootNode.SetData("potatoDebug", false);
+            }*/
 
             _rootNode.SetData("targetNode", TargetNode);
             node nearestNode = (node)GetData("closestNode");
             _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPath(nearestNode, TargetNode);
             _rootNode.SetData("nextNode", _pathFindingList[0]);
             _rootNode.SetData("pathFindingList", _pathFindingList);
+            _rootNode.SetData("wandering", true);
+            _rootNode.SetData("nearNode", false);
 
-           // _rootNode.SetData("potatoDebug", false);
-            Debug.Log("afterGettingthe List");
+            // _rootNode.SetData("potatoDebug", false);
+            //Debug.Log("afterGettingthe List");
+
             state = NodeState.SUCCESS;
             return state;
 

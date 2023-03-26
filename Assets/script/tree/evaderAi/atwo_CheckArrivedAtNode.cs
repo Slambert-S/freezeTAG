@@ -28,9 +28,10 @@ public class atwo_CheckArrivedAtNode : Node
         else
         {
             object nearNode = GetData("nearNode");
+            object potato = GetData("potatoDebug");
             if (nearNode != null && (bool)nearNode == true)
             {
-                Debug.Log("patate");
+               // Debug.Log("poutine");
                 state = NodeState.SUCCESS;
                 return state;
             }

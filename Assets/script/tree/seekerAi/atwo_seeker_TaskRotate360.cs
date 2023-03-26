@@ -69,7 +69,9 @@ public class atwo_seeker_TaskRotate360 : Node
                 _rootNode.SetData("stopPatrol", false);
                 _rootNode.SetData("seeTargetAgent", false);
                 _rootNode.ClearData("targetNode");
-                
+                _rootNode.SetData("isInvestigating", false);
+                _scriptManager.variableReference.nodeTrigger = null;
+
 
 
                 //Debug.Log("In failure");

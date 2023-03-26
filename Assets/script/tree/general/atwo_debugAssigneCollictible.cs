@@ -15,16 +15,21 @@ public class atwo_debugAssigneCollictible : Node
 
     public override NodeState Evaluate()
     {
-        object potato = GetData("potatoDebug");
-        if(potato == null || (bool)potato == false)
-        {
-            GameObject collectible = _scriptReference.variableReference.collectible;
+      
+            GameObject collectible = GameObject.Find("gameManger").GetComponent<coinManager>().assigneCollectible(); 
+            if(collectible == null)
+            {
+                return NodeState.FAILURE;
+            }
+        //_scriptReference.variableReference.collectible;
+           // Debug.Log("in debug assigne collectible");
             _rootNode.SetData("collectible", collectible);
-            state = NodeState.SUCCESS;
+            // Debug.Log(collectible);
+            state = NodeState.FAILURE;
             return state;
-        }
+        
 
-        return NodeState.FAILURE;
+     
         
     }
 

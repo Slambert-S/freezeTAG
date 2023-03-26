@@ -47,6 +47,7 @@ public class atwo_evader_TaskFindEscapePath : Node
         _rootNode.SetData("nextNode", _pathFindingList[0]);
         _rootNode.SetData("pathFindingList", _pathFindingList);
         _rootNode.SetData("needEvadePath", false);
+        _rootNode.SetData("wandering", true);
         _scriptReference.variableReference.needNewPath = false;
 
 

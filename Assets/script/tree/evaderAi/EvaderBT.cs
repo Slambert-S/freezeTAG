@@ -9,6 +9,9 @@ public class EvaderBT : Tree
     public List<node> pathFindingList = new List<node>();
     private Node _rootDebug;
     public node targetNode;
+    public bool nearNode;
+    public bool wandering;
+
 
     public bhv_strg_agent behaviourScript { set; get; }
 
@@ -64,12 +67,13 @@ public class EvaderBT : Tree
                         new Selector(new List<Node>{
                             
                             new Sequence(new List<Node>{
-                                new atwo_debugAssigneCollictible(scriptReference),
+                                
                                 new atwo_evader_CheckAssignedCollectible(),
                                 new atwo_evader_TaskSetColectibleNode(pathFindingList,transform)
                         
                             }),
 
+                            new atwo_debugAssigneCollictible(scriptReference),
                             new atwo_evader_TaskGeatRandomTarget(transform, pathFindingList)
                         }),
 
@@ -98,15 +102,24 @@ public class EvaderBT : Tree
                                 new Selector(new List<Node>{
 
                                     new Sequence(new List<Node>{
-                                        new atwo_debugAssigneCollictible(scriptReference),
+                                        
                                         new atwo_evader_CheckAssignedCollectible(),
+                                        new Selector(new List<Node>{ 
+                                            //was i wandering
+                                            new Sequence(new List<Node>{ 
+                                                new atwo_evader_CheckWandering(),
+                                                new atwo_evader_TaskSetColectibleNode(pathFindingList,transform)
+                                            }),
+                                            new atwo_evader_TaskMoveToCollectCollectible(transform,scriptReference)
+                                        }),
+                                        
                                         //move toward the collectible
-                                        new atwo_evader_TaskMoveToCollectCollectible(transform,scriptReference),
-                                        new atwo_evader_TaskSetColectibleNode(pathFindingList,transform)
+                                        
 
                                     }),
-
+                                    new atwo_debugAssigneCollictible(scriptReference),
                                     new atwo_evader_TaskGeatRandomTarget(transform, pathFindingList)
+                                   
                                 }),
 
 
@@ -157,5 +170,18 @@ public class EvaderBT : Tree
     {
         pathFindingList = (List<node>)_rootDebug.GetData("pathFindingList");
         targetNode = (node)_rootDebug.GetData("nextNode");
+        object t = _rootDebug.GetData("nearNode");
+
+        if(t != null)
+        { 
+            nearNode = (bool)t ;
+        }
+
+        object j = _rootDebug.GetData("wandering");
+        if(j != null)
+        {
+            wandering = (bool)j; 
+        }
+
     }
 }

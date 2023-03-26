@@ -21,18 +21,21 @@ public class atwo_evader_TaskMoveToCollectCollectible : Node
             Vector3 steering = _scriptReference.seekScript.beaviourSeek(2, collectible.transform.position, _scriptReference.behaviourAgent, false);
             _scriptReference.behaviourAgent.pursueTarget(steering);
             _rootNode.SetData("nearNode", true);
-            Debug.Log(Vector3.Distance(_transform.position, collectible.transform.position));
+            //Debug.Log(Vector3.Distance(_transform.position, collectible.transform.position));
+            //Debug.Log(collectible);
+            
             state = NodeState.RUNNING;
             return state;
 
         }
         else
         {
+            collectible.GetComponent<coin>().atwo_coinCollected();
             _rootNode.SetData("collectible", null);
             _rootNode.SetData("potatoDebug", true);
             Debug.Log("toutch the collectible");
             _rootNode.SetData("nearNode", false);
-            state = NodeState.FAILURE;
+            state = NodeState.SUCCESS;
             return state;
         }
     }

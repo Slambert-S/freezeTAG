@@ -42,6 +42,7 @@ public class atwo_seeker_CheckSpottedAgent : Node
             _rootNode.SetData("targetLastKnownNode", _scriptReference.variableReference.targetLastKnownNode);
             //_rootNode.SetData("seeTargetAgent", false);
             _rootNode.SetData("stopPatrol", true);
+            _rootNode.SetData("isInvestigating", false);
 
             state = NodeState.SUCCESS;
             return state;

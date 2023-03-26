@@ -23,11 +23,12 @@ public class atwo_TaskGoToTarget : Node
         object nearNode = GetData("nearNode");
         if (nearNode != null && (bool)nearNode == true)
         {
-            Debug.Log("patate");
+            //Debug.Log("patate");
             state = NodeState.SUCCESS;
             return state;
         }
         node target = (node)GetData("nextNode");
+       
         
         if (_scritRef.seekScript != null)
         {

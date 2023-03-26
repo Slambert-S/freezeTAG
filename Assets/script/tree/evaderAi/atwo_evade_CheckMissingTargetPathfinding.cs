@@ -22,9 +22,15 @@ public class atwo_evade_CheckMissingTargetPathfinding : Node
             //TODO (Change NONE to a correct type)
             //node nearestNode = findClosestNode.getClosestNode(_transform.position);
             //parent.parent.SetData("targetNode", nearestNode);
-            
-            state = NodeState.SUCCESS;
-            return state;
+            object isInvestigating = GetData("isInvestigating");
+
+            //if(isInvestigating == null || (bool) isInvestigating == false)
+            //{
+                state = NodeState.SUCCESS;
+                return state;
+            //}
+    
+
         }
         else
         {
