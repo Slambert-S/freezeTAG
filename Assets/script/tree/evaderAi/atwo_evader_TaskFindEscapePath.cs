@@ -36,13 +36,13 @@ public class atwo_evader_TaskFindEscapePath : Node
 
         _rootNode.SetData("targetNode", newTargetNode);
         node nearestNode = (node)GetData("closestNode");
-        _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPath(nearestNode, newTargetNode);
+        _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPathDager(nearestNode, newTargetNode, new List<node>());
         while(_pathFindingList.Count < 3)
         {
             newTargetNode = GameObject.Find("Node List").GetComponent<nodeSelection>().getRandomNode();
             _rootNode.SetData("targetNode", newTargetNode);
             nearestNode =findClosestNode.getClosestNode(_transform.position);
-            _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPath(nearestNode, newTargetNode);
+            _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPathDager(nearestNode, newTargetNode, new List<node>());
         }
         _rootNode.SetData("nextNode", _pathFindingList[0]);
         _rootNode.SetData("pathFindingList", _pathFindingList);

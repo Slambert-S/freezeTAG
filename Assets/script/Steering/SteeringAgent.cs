@@ -490,7 +490,7 @@ public class SteeringAgent : MonoBehaviour
                 newTargetNode = GameObject.Find("Node List").GetComponent<nodeSelection>().getRandomNode();
                // Debug.Log("in do while new node name = " + newTargetNode.name);
             } while (newTargetNode == this.lastNode);
-            pathFindingList = gameObject.GetComponent<pathFinding>().findPath(lastNode, newTargetNode);
+            pathFindingList = gameObject.GetComponent<pathFinding>().findPath(lastNode, newTargetNode, new List<node>());
         }
         
     }
@@ -512,7 +512,7 @@ public class SteeringAgent : MonoBehaviour
             }
         } while (newTargetNode == this.lastNode);
             
-        pathFindingList = gameObject.GetComponent<pathFinding>().findPath(lastNode, newTargetNode);
+        pathFindingList = gameObject.GetComponent<pathFinding>().findPath(lastNode, newTargetNode, new List<node>());
         //Debug.Log(" I am fleeing from the enemy");
         
 
@@ -523,7 +523,7 @@ public class SteeringAgent : MonoBehaviour
         if (!this.CompareTag("Player"))
         {
             
-            pathFindingList = gameObject.GetComponent<pathFinding>().findPath(currNode, targetNode);
+            pathFindingList = gameObject.GetComponent<pathFinding>().findPath(currNode, targetNode, new List<node>());
         }
     }
 

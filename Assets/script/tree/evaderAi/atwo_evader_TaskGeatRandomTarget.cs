@@ -31,7 +31,7 @@ public class atwo_evader_TaskGeatRandomTarget : Node
 
             _rootNode.SetData("targetNode", TargetNode);
             node nearestNode = (node)GetData("closestNode");
-            _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPath(nearestNode, TargetNode);
+            _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPathDager(nearestNode, TargetNode, new List<node>());
             _rootNode.SetData("nextNode", _pathFindingList[0]);
             _rootNode.SetData("pathFindingList", _pathFindingList);
             _rootNode.SetData("wandering", true);

@@ -15,4 +15,5 @@ public class node : MonoBehaviour
 
     [SerializeField]public List<nodeStruct> listNeighbour;
     public string name;
+    public int dangerCost = 0;
 }

@@ -5,9 +5,10 @@ using BehaviorTree;
 
 public class ateo_debug_spottedEnemyCheck : Node
 {
-    public ateo_debug_spottedEnemyCheck()
+    private scriptManager _scriptReference;
+    public ateo_debug_spottedEnemyCheck(scriptManager scriptReference)
     {
-        
+        _scriptReference = scriptReference;
     }
 
     public override NodeState Evaluate()
@@ -23,6 +24,18 @@ public class ateo_debug_spottedEnemyCheck : Node
                 return state;
             }
         }
+
+        if(_scriptReference.variableReference.helpRequested == true)
+        {
+            _rootNode.SetData("seeTargetAgent", false);
+            _rootNode.SetData("stopPatrol", true);
+            _rootNode.SetData("targetLastKnownNode", _scriptReference.variableReference.targetLastKnownNode);
+            _scriptReference.variableReference.helpRequested = false;
+            
+            state = NodeState.RUNNING;
+            return state;
+        }
+    
 
         state = NodeState.FAILURE;
         return state;

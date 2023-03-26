@@ -22,10 +22,10 @@ public class atwo_seeker_TaskGetLastKnownNodeOfEvader : Node
 
         if (TargetNode != null)
         {
-
+            List<node> forbidenNode = (List<node>)GetData("ForbidenNode");
             _rootNode.SetData("targetNode", TargetNode);
             node nearestNode = (node)GetData("closestNode");
-            _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPath(nearestNode, TargetNode);
+            _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPath(nearestNode, TargetNode, forbidenNode);
             _rootNode.SetData("nextNode", _pathFindingList[0]);
             _rootNode.SetData("pathFindingList", _pathFindingList);
             Debug.Log("afterGettingthe List");

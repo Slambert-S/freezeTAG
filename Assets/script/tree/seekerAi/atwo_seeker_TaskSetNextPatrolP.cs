@@ -26,6 +26,9 @@ public class atwo_seeker_TaskSetNextPatrolP : Node
             List<node> listOfWaypoint = (List<node>)GetData("listOfWaypoint");
             node lastPatrolPoint = (node)GetData("lastPatrolPoint");
             node nextPatrolPoint = (node)GetData("nextPatrolPoint");
+            lastPatrolPoint.dangerCost = lastPatrolPoint.dangerCost - 10;
+            nextPatrolPoint.dangerCost = nextPatrolPoint.dangerCost + 10;
+
 
             lastPatrolPoint = nextPatrolPoint;
             waypointIndex = ((waypointIndex + 1) % numberOfWaypoint);

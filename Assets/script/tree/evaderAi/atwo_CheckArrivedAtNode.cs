@@ -40,7 +40,11 @@ public class atwo_CheckArrivedAtNode : Node
             {
                // Debug.Log("near the node");
                 _rootNode.SetData("closestNode", targetNode);
+                int _dangerCost = _scriptManager.variableReference.dangerCost;
+                targetNode.dangerCost = targetNode.dangerCost + _dangerCost;
+                _scriptManager.variableReference.lastNode.dangerCost = _scriptManager.variableReference.lastNode.dangerCost- _dangerCost;
                 _scriptManager.variableReference.lastNode = targetNode;
+
                 state = NodeState.SUCCESS;
                 return state;
             }

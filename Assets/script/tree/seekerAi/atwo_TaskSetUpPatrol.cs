@@ -43,6 +43,18 @@ public class atwo_TaskSetUpPatrol : Node
 
         }
 
+        List<node> forbidenNode = (List<node>)GetData("ForbidenNode");
+        if (forbidenNode == null)
+        {
+            List<node> _forbidenNode = new List<node>();
+            _rootNode.SetData("ForbidenNode", _forbidenNode);
+
+        }
+        object requestBackup = GetData("RequestBackup");
+        if(requestBackup == null)
+        {
+            _rootNode.SetData("RequestBackup", true);
+        }
 
         //lastPatrolPoint
         node lastWaypoint = (node)GetData("lastPatrolPoint");

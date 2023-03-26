@@ -14,6 +14,7 @@ public class scriptManager : MonoBehaviour
     public atwo_detectSeeker detectSeekerScript;
     public timerForNewPath timerForNewPath;
     public atwo_freezeBomb freezeBombScript;
+
    
 
     

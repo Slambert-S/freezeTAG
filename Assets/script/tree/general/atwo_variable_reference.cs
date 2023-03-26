@@ -18,6 +18,11 @@ public class atwo_variable_reference : MonoBehaviour
     public int bombCharge = 2;
     public bool canTrowBomb = true;
     public bool isFreesed = false;
+
+    public GameObject debugBackup;
+    public List<node> forbidenList;
+    public bool helpRequested;
+    public int dangerCost = 0;
     private void Start()
     {
         seeTargetAgent = false;

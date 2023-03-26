@@ -20,9 +20,18 @@ public class atwo_seeker_TaskResetPathTraking : Node
 
         if(distance <= 0.5f)
         {
-            _rootNode.ClearData("targetNode");
-            _rootNode.ClearData("closestNode");
+            
+            //_rootNode.SetData("lookingStep", 6);
+            _rootNode.SetData("isLookingAround", false);
             _rootNode.SetData("awayFromWaypoint", true);
+            _rootNode.ClearData("closestNode");
+            _rootNode.ClearData("targetNode");
+            //_rootNode.SetData("stopPatrol", false);
+            //_rootNode.SetData("seeTargetAgent", false);
+            //_rootNode.ClearData("targetNode");
+            //_rootNode.SetData("isInvestigating", false);
+            //_scriptReference.variableReference.nodeTrigger = null;
+
             _scriptReference.variableReference.isStuck = false;
             _scriptReference.variableReference.debugStuckNode = null;
             state = NodeState.FAILURE;

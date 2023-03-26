@@ -58,7 +58,7 @@ public class SeekerBT : Tree
                 new Sequence(new List<Node>
                 {
                      //find path to last knone node
-                    new ateo_debug_spottedEnemyCheck(),
+                    new ateo_debug_spottedEnemyCheck(scriptReference),
                     
                     //move toward last known node
                     new Selector(new List<Node>
@@ -87,7 +87,10 @@ public class SeekerBT : Tree
 
                             new Sequence(new List<Node>
                             {
-
+                                //Request help if possible 
+                                new atwo_seeker_TaskAskBackup(scriptReference,transform),
+                                
+                                
                                 new atwo_CheckArrivedAtNode(this.transform, scriptReference),
 
                                 //check for last node of if i need to get next node 
@@ -157,7 +160,7 @@ public class SeekerBT : Tree
 
 
                      new Selector(new List<Node>
-                    {
+                     {
                        
                             //check if i arrived at the taget node
                                   //Check for closet node
