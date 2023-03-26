@@ -28,6 +28,14 @@ public class atwo_TaskGoToTarget : Node
             return state;
         }
         node target = (node)GetData("nextNode");
+
+        if(target == null)
+        {
+            _rootNode.ClearData("targetNode");
+            _rootNode.ClearData("closestNode");
+            state = NodeState.FAILURE;
+            return state;
+        }
        
         
         if (_scritRef.seekScript != null)

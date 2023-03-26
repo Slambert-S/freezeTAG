@@ -19,6 +19,13 @@ public class EvaderBT : Tree
     {
         Node root = new Selector(new List<Node>
         {
+            new Sequence(new List<Node>{ 
+                //Check if stuck
+                new atwo_CheckIfStuck(scriptReference),
+                new atwo_resetToNearestNode(transform,scriptReference),
+                //moveToward nearest Node if distance <= 0.2 then reset closest node and target node
+                new atwo_evaderResetPathFiding(scriptReference, transform)
+            }),
             // Fleeing from enemy
             new Selector(new List<Node>{
                 

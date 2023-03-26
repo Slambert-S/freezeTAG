@@ -1199,7 +1199,7 @@ GameObject:
   - component: {fileID: 162511878}
   - component: {fileID: 162511877}
   - component: {fileID: 162511876}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3183,7 +3183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5473569773201559785, guid: fd8e0760db14a534a89257f68a4f2a8c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.05
+      value: 0.095
       objectReference: {fileID: 0}
     - target: {fileID: 5473569773201559785, guid: fd8e0760db14a534a89257f68a4f2a8c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8985,6 +8985,8 @@ MonoBehaviour:
   tagTarget: {fileID: 0}
   isEvader: 0
   isFreezed: 0
+  isStuck: 0
+  debugStuckNode: {fileID: 0}
   targetLastKnownNode: {fileID: 0}
   lastNode: {fileID: 0}
   collectible: {fileID: 0}
@@ -9539,6 +9541,7 @@ GameObject:
   - component: {fileID: 1474408800}
   - component: {fileID: 1474408802}
   - component: {fileID: 1474408803}
+  - component: {fileID: 1474408804}
   m_Layer: 0
   m_Name: target
   m_TagString: evader
@@ -9735,12 +9738,14 @@ MonoBehaviour:
   tagTarget: {fileID: 0}
   isEvader: 1
   isFreezed: 0
+  isStuck: 0
+  debugStuckNode: {fileID: 0}
   targetLastKnownNode: {fileID: 0}
   lastNode: {fileID: 0}
   collectible: {fileID: 188008348}
   needNewPath: 1
   nodeTrigger: {fileID: 0}
-  bombCharge: 2
+  bombCharge: 0
   canTrowBomb: 1
   isFreesed: 0
 --- !u!114 &1474408799
@@ -9802,6 +9807,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 802eb60d1597c0f4e84bccc2bcbbbae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1474408804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474408787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e859da3d833451e4c9075c97c982e713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1491966278

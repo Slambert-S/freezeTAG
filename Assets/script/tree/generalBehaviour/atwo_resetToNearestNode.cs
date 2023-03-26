@@ -22,6 +22,7 @@ public class atwo_resetToNearestNode : Node
             closestNode = findClosestNode.getClosestNode(_transform.position);
             _scriptReference.variableReference.debugStuckNode = closestNode;
         }
+
         float distance = Vector3.Distance(_transform.position, closestNode.transform.position);
 
         Vector3 steering = _scriptReference.seekScript.beaviourSeek(4, closestNode.transform.position, _scriptReference.behaviourAgent, false);

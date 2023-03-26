@@ -29,6 +29,15 @@ public class atwo_seeker_TaskPursue : Node
             Vector3 targetPosition = tagTarget.transform.position;
             Vector3 steering = _scriptReference.seekScript.beaviourSeek(4, targetPosition, _scriptReference.behaviourAgent, false);
             _scriptReference.behaviourAgent.pursueTarget(steering);
+            
+            float distance = Vector3.Distance(_transform.position, targetPosition);
+            if (distance <= 0.3f)
+            {
+                tagTarget.GetComponent<atwo_evader_getCought>().getCought();
+                _rootNode.ClearData("tagTarget");
+                state = NodeState.FAILURE;
+                return state;
+            }
             state = NodeState.RUNNING;
             return state;
         }
