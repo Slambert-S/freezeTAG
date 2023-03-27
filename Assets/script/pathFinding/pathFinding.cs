@@ -129,7 +129,7 @@ public class pathFinding : MonoBehaviour
         
     }
 
-    public List<node> findPathDager(node start, node goal, List<node> forbitenNode)
+    public List<node> findPathDanger(node start, node goal, List<node> forbitenNode)
     {
 
         open_List = new List<node>();

@@ -31,7 +31,7 @@ public class atwo_evader_TaskSetColectibleNode : Node
 
                 _rootNode.SetData("targetNode", TargetNode);
                 node nearestNode = (node)GetData("closestNode");
-                _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPathDager(nearestNode, TargetNode, new List<node>());
+                _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPath(nearestNode, TargetNode, new List<node>());
 
                 /*if (_pathFindingList.Count == 0)
                 {

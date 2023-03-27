@@ -31,10 +31,14 @@ public class atwo_seeker_TaskAskBackup : Node
                     listForBackup.Add(pathToTarget[numberOfStep -1 - i]);
                 }
             }
-            else
+            else if (numberOfStep >= 3)
             {
                 listForBackup.Add(pathToTarget[numberOfStep - 1 ]);
                 listForBackup.Add(pathToTarget[numberOfStep - 2]);
+            }
+            else
+            {
+               // listForBackup.Add(pathToTarget[numberOfStep - 1]);
             }
             _rootNode.SetData("RequestBackup", false);
 

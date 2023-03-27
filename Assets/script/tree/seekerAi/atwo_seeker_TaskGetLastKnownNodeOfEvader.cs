@@ -8,13 +8,15 @@ public class atwo_seeker_TaskGetLastKnownNodeOfEvader : Node
 
     private Transform _transform;
     private node _debugTarget;
+    private scriptManager _scriptReference;
     private List<node> _pathFindingList = new List<node>();
     // Start is called before the first frame update
-    public atwo_seeker_TaskGetLastKnownNodeOfEvader(Transform transform, List<node> pathFindingList, node debugTarget)
+    public atwo_seeker_TaskGetLastKnownNodeOfEvader(Transform transform, List<node> pathFindingList, node debugTarget,scriptManager scriptReference)
     {
         _transform = transform;
         _pathFindingList = pathFindingList;
         _debugTarget = debugTarget;
+        _scriptReference = scriptReference;
     }
     public override NodeState Evaluate()
     {
@@ -35,7 +37,8 @@ public class atwo_seeker_TaskGetLastKnownNodeOfEvader : Node
         }
         else
         {
-            state = NodeState.FAILURE;
+            _scriptReference.variableReference.isStuck = true;
+            state = NodeState.SUCCESS;
             return state;
         }
     }

@@ -29,6 +29,11 @@ public class atwo_CheakLastNode : Node
                 state = NodeState.SUCCESS;
                // Debug.Log("Last node of the path");
                 
+            }else if (listNode.Count == 0)
+            {
+               // _rootNode.ClearData("pathFindingList");
+                state = NodeState.FAILURE;
+                return state;
             }
             else
             {

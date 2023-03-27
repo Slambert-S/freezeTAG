@@ -31,6 +31,7 @@ public class atwo_evader_TaskMoveToCollectCollectible : Node
         else
         {
             collectible.GetComponent<coin>().atwo_coinCollected();
+            GameObject.Find("gameManger").GetComponent<atwo_scoreTraking>().updateScore(2);
             _rootNode.SetData("collectible", null);
             _rootNode.SetData("potatoDebug", true);
             Debug.Log("toutch the collectible");

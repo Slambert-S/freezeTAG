@@ -79,7 +79,7 @@ public class SeekerBT : Tree
                             {
                                 new atwo_evade_CheckMissingTargetPathfinding(transform),
                                // new atwo_evader_TaskGeatRandomTarget(transform, pathFindingList, debugTargetNode)
-                               new atwo_seeker_TaskGetLastKnownNodeOfEvader (transform, pathFindingList, debugTargetNode)
+                               new atwo_seeker_TaskGetLastKnownNodeOfEvader (transform, pathFindingList, debugTargetNode,scriptReference)
 
 
 

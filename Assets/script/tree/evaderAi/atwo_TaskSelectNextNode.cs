@@ -17,6 +17,14 @@ public class atwo_TaskSelectNextNode : Node
     {
         //Debug.Log("In task select next node");
         List<node> listNode = (List<node>)GetData("pathFindingList");
+        if(listNode.Count  <= 1)
+        {
+           
+            _rootNode.ClearData("nextNode");
+            _rootNode.ClearData("targetNode");
+            state = NodeState.FAILURE;
+            return state;
+        }
         listNode.RemoveAt(0);
         _rootNode.SetData("pathFindingList", listNode);
         _rootNode.SetData("nextNode", listNode[0]);
