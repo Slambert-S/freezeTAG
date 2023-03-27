@@ -28,7 +28,7 @@ public class atwo_seeker_TaskGetPathToPatrolPoint : Node
             _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPath(nearestNode, TargetNode,new List<node>());
             _rootNode.SetData("nextNode", _pathFindingList[0]);
             _rootNode.SetData("pathFindingList", _pathFindingList);
-            Debug.Log("afterGettingthe List");
+           // Debug.Log("afterGettingthe List");
             state = NodeState.SUCCESS;
             return state;
 

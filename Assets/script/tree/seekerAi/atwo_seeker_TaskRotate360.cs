@@ -18,7 +18,7 @@ public class atwo_seeker_TaskRotate360 : Node
         bool isLokingAround = (bool)GetData("isLookingAround");
         if (isLokingAround == false)
         {
-            Debug.Log("In roatetion");
+           // Debug.Log("In roatetion");
             _rootNode.SetData("lookingStep", 1);
 
             _rootNode.SetData("isLookingAround", true);
@@ -71,6 +71,9 @@ public class atwo_seeker_TaskRotate360 : Node
                 _rootNode.ClearData("targetNode");
                 _rootNode.SetData("isInvestigating", false);
                 _scriptManager.variableReference.nodeTrigger = null;
+                _rootNode.SetData("RequestBackup", true);
+
+
 
 
 

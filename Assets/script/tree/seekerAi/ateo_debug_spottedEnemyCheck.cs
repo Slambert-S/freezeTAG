@@ -28,9 +28,11 @@ public class ateo_debug_spottedEnemyCheck : Node
         if(_scriptReference.variableReference.helpRequested == true)
         {
             _rootNode.SetData("seeTargetAgent", false);
+            _rootNode.SetData("RequestBackup", false);
             _rootNode.SetData("stopPatrol", true);
             _rootNode.SetData("targetLastKnownNode", _scriptReference.variableReference.targetLastKnownNode);
             _scriptReference.variableReference.helpRequested = false;
+
             
             state = NodeState.RUNNING;
             return state;

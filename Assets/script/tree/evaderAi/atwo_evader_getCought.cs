@@ -8,6 +8,7 @@ public class atwo_evader_getCought : MonoBehaviour
     public void getCought()
     {
         //call event for traking player
+        GameObject.Find("gameManger").GetComponent<coinManager>().evaderGotCought();
         Destroy(this.gameObject);
 
     }

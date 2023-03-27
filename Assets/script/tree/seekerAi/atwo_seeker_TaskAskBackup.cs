@@ -8,10 +8,18 @@ public class atwo_seeker_TaskAskBackup : Node
     // Start is called before the first frame update
     private scriptManager _scriptReference;
     private Transform _transform;
+    private List<GameObject> _listOfSeeker = new List<GameObject>();
     public atwo_seeker_TaskAskBackup(scriptManager scriptReference, Transform transform)
     {
         _scriptReference = scriptReference;
         _transform = transform;
+
+        SeekerBT[] potato = GameObject.Find("seekerList").transform.GetComponentsInChildren<SeekerBT>();
+
+        foreach (SeekerBT n in potato)
+        {
+            _listOfSeeker.Add(n.gameObject);
+        }
     }
 
     public override NodeState Evaluate()
@@ -21,7 +29,10 @@ public class atwo_seeker_TaskAskBackup : Node
         if(needBackup != null && (bool)needBackup == true)
         {
             List<node> pathToTarget = (List<node>)GetData("pathFindingList");
-            
+            if(pathToTarget == null)
+            {
+                pathToTarget = new List<node>();
+            }
             int numberOfStep = pathToTarget.Count;
             List<node> listForBackup = new List<node>();
             if(numberOfStep >= 5)
@@ -50,11 +61,28 @@ public class atwo_seeker_TaskAskBackup : Node
                 j++;
             }
 
-            _scriptReference.variableReference.debugBackup.GetComponent<atwo_variable_reference>().forbidenList = listForBackup;
-            _scriptReference.variableReference.debugBackup.GetComponent<atwo_variable_reference>().helpRequested = true;
-            _scriptReference.variableReference.debugBackup.GetComponent<atwo_variable_reference>().targetLastKnownNode = (node)GetData("targetLastKnownNode");
+            float distance = float.MaxValue;
+            GameObject closestSeeker = _listOfSeeker[0];
+            float currentDistance = 0;
+            foreach (GameObject seeker in _listOfSeeker)
+            {
+                currentDistance = Vector3.Distance(_transform.position, seeker.transform.position);
+                if(currentDistance < 3)
+                {
+                    //do nothing
+                }
+                else if (currentDistance <= distance)
+                {
+                    distance = currentDistance;
+                    closestSeeker = seeker;
+                }
+            }
+
+            closestSeeker.GetComponent<atwo_variable_reference>().forbidenList = listForBackup;
+            closestSeeker.GetComponent<atwo_variable_reference>().helpRequested = true;
+            closestSeeker.GetComponent<atwo_variable_reference>().targetLastKnownNode = (node)GetData("targetLastKnownNode");
             //Debug.Log(listForBackup);
-            Debug.Log("Requesting assistamce");
+            Debug.Log("Requesting assistamce from :"  +closestSeeker);
             
         }
 

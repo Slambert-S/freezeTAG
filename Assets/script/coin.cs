@@ -7,6 +7,7 @@ public class coin : MonoBehaviour
     // Start is called before the first frame update
     public delegate void CoinCollected();
     public static event CoinCollected onCollectedCoin;
+    public int index;
     void Start()
     {
         
@@ -36,6 +37,7 @@ public class coin : MonoBehaviour
          }*/
 
         GameObject.Find("gameManger").GetComponent<seeker_investigation>().assigneSeekerToInvestigateCollectible(transform.position);
+        GameObject.Find("gameManger").GetComponent<coinManager>().coinColected();
 
         Destroy(this.gameObject);
     }

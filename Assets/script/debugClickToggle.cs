@@ -20,7 +20,7 @@ public class debugClickToggle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        /*
         if (Input.GetKey(KeyCode.C))
         {
             Debug.Log("Before remove  value : " + listInt[0] + "  Count value :" + listInt.Count);
@@ -33,6 +33,6 @@ public class debugClickToggle : MonoBehaviour
             //TargetNode = GameObject.Find("Node List").GetComponent<nodeSelection>().getRandomNode();
             //pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPath(nearestNode, TargetNode);
 
-        }
+        }*/
     }
 }

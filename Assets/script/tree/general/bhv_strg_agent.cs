@@ -8,6 +8,8 @@ public class bhv_strg_agent : MonoBehaviour
     public float maxSpeed;
     private scriptManager _scriptManager;
     private atwo_variable_reference _variableManager;
+    public collisionRayCast _colisionScript;
+    public seek _seekScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +20,55 @@ public class bhv_strg_agent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(this.CompareTag("Player"))
+        {
+
+            playerVelocity();
+        }
     }
+    public void playerVelocity()
+    {
+        Debug.Log("potato");
+       /* if (coinTarget && Vector3.Distance(transform.position, coinTarget.transform.position) < 1)
+        {
+
+            if (playerCollectedCoin != null)
+            {
+                playerCollectedCoin();
+            }
+
+            coinTarget.GetComponent<coin>().coinCollected();
+            //coinTarget = null;
+            wandering = true;
+            coinNode = null;
+
+
+        }*/
+
+        Vector3[] neighbors = _colisionScript.visionDetectionVOneebug();
+
+        Vector3 tempAcc = Vector3.zero;
+        int nbSteering = 0;
+        foreach (Vector3 obstacle in neighbors)
+        {
+            if (obstacle != Vector3.zero)
+            {
+                tempAcc += _seekScript.beaviourSeekWall(50, obstacle, this, true);
+
+                nbSteering++;
+            }
+
+        }
+        tempAcc.y = 0;
+
+        Velocity += tempAcc * Time.deltaTime;
+        //Velocity.Set(Velocity.x, 0 ,Velocity.z);
+        Velocity = Vector3.ClampMagnitude(Velocity, maxSpeed);
+        this.transform.position += Velocity;
+        // this.transform.position = (Velocity.x, 20, Velocity.z);
+        Velocity = Vector3.zero;
+    }
+
 
     public void moveAgent(Vector3 mainVelocity)
     {

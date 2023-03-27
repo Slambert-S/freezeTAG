@@ -28,6 +28,12 @@ public class atwo_seeker_TaskGetLastKnownNodeOfEvader : Node
             _rootNode.SetData("targetNode", TargetNode);
             node nearestNode = (node)GetData("closestNode");
             _pathFindingList = GameObject.Find("Node List").GetComponent<pathFinding>().findPath(nearestNode, TargetNode, forbidenNode);
+
+            if (_pathFindingList.Count < 1)
+            {
+                _rootNode.ClearData("targetLastKnownNode");
+                return NodeState.FAILURE;
+            }
             _rootNode.SetData("nextNode", _pathFindingList[0]);
             _rootNode.SetData("pathFindingList", _pathFindingList);
             Debug.Log("afterGettingthe List");
@@ -37,7 +43,10 @@ public class atwo_seeker_TaskGetLastKnownNodeOfEvader : Node
         }
         else
         {
+            _rootNode.SetData("stopPatrol", false);
+            _rootNode.SetData("awayFromWaypoint", true);
             _scriptReference.variableReference.isStuck = true;
+            Debug.Log("Target last known node is null");
             state = NodeState.SUCCESS;
             return state;
         }

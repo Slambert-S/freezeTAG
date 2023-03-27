@@ -65,4 +65,17 @@ public class endGame : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    public void seekerWin()
+    {
+
+        Time.timeScale = 0;
+    }
+
+    public void evaderWin(int finalScore)
+    {
+        gameOverScreen.gameObject.SetActive(true);
+        aiScore.text = finalScore.ToString();
+        Time.timeScale = 0;
+    }
+
 }

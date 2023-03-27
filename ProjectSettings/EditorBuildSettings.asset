@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/mainMenu.unity
     guid: c6fc366c4d5c34441ab47f86ab601fd1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/labyrinth.unity
     guid: 3ecc02be2c25952479706c500b4c2c7c
+  - enabled: 1
+    path: Assets/Scenes/a2.unity
+    guid: 6f80bdd2d9d9dc347988f09e837ddd9b
   m_configObjects: {}
